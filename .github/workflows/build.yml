@@ -20,6 +20,6 @@ jobs:
         with:
           node-version: 18.x
       - name: Install npm
-        run: npm ci
+        run: cd frontend && npm ci
       - name: Build
-        run: cd frontend && npm run build
+        run: npm run build
