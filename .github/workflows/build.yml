@@ -22,4 +22,4 @@ jobs:
       - name: Install npm
         run: cd frontend && npm ci
       - name: Build
-        run: npm run build
+        run: cd frontend && npm run build
