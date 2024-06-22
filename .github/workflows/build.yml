@@ -1,0 +1,25 @@
+name: 'build and deploy'
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - name: Install npm
+        run: npm ci
+      - name: Build
+        run: cd frontend && npm run build
