@@ -23,12 +23,12 @@ jobs:
         run: cd frontend && npm ci
       - name: Build
         run: cd frontend && npm run build
-      - run: ls
+      - run: cd frontend && ls
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: app-build
-          path: build
+          path: frontend/build
 
   deploy:
     runs-on: 'ubuntu-latest'
