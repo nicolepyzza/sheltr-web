@@ -38,7 +38,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: app-build
-      - run: ls
+      - name: Configure Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          region: us-east-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy
         uses: reggionick/s3-deploy@v4
         with:
