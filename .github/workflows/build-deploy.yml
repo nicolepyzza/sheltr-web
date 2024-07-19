@@ -23,17 +23,25 @@ jobs:
         run: cd frontend && npm ci
       - name: Build
         run: cd frontend && npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-build
+          path: dist
 
   deploy:
     runs-on: 'ubuntu-latest'
     needs: build
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: app-build
+      - run: ls
       - name: Deploy
         uses: reggionick/s3-deploy@v4
         with:
-          folder: frontend/build
+          folder: ./app-build
           bucket: ${{ secrets.S3_BUCKET_WEB }}
           bucket-region: us-east-1
       
