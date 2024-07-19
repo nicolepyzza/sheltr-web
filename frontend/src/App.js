@@ -1,12 +1,16 @@
+import { useEffect, useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">sheltr</header>
-      <p className="App-subheader">coming soon</p>
-    </div>
-  );
-}
+import Footer from './components/footer';
+import Splash from './pages/splash';
 
-export default App;
+
+
+export default function App () {
+  return (
+    <div className='App'>
+      <Splash />
+      <Footer />
+    </div>
+  )
+}

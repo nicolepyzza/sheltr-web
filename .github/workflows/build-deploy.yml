@@ -23,3 +23,17 @@ jobs:
         run: cd frontend && npm ci
       - name: Build
         run: cd frontend && npm run build
+
+  deploy:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy
+        uses: reggionick/s3-deploy@v4
+        with:
+          folder: frontend/build
+          bucket: ${{ secrets.S3_BUCKET_WEB }}
+          bucket-region: us-east-1
+      
+
