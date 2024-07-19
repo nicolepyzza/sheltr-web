@@ -42,7 +42,7 @@ jobs:
       - name: Deploy
         uses: reggionick/s3-deploy@v4
         with:
-          folder: ./app-build
+          folder: '.'
           bucket: ${{ secrets.S3_BUCKET_WEB }}
           bucket-region: us-east-1
       
