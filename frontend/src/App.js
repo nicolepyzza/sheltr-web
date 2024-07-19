@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
 import './App.css';
 
 import Footer from './components/footer';
 import Splash from './pages/splash';
-
 
 
 export default function App () {
